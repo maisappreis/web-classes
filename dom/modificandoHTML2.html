@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        const div = document.querySelector('div'); // seleciona a 'div'.
+        div.innerHTML = 'Texto Alterado'; // innerHTML alterou tudo que está dentro da 'div', retirou inclusive o paragráfo.
+        // div.outerHTML = 'Outro texto'; // altera até o que está fora da 'div', retirou a 'div' e retirou o 'p'.
+        div.insertAdjacentHTML('beforebegin', '<p>Antes do Início</p>');
+        div.insertAdjacentHTML('afterbegin', '<p>Depois do Inócio</p>');
+        div.insertAdjacentHTML('beforeend', '<p>Antes do Fim</p>');
+        div.insertAdjacentHTML('afterend', '<p>Depois do Fim</p>');
+
+        // Somente texto (sem tags)
+        console.log(div.innerText); // imprime apenas o texto no console. Diferente do 'innerHTML' que imprime as tags.
+
+    </script>
+</body>
+
+</html>

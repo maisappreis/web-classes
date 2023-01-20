@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #02</h1>
+    <div id='div1'>1</div>
+    <div id="resultado1">?</div>
+    <br>
+    <input type="text" placeholder="Digite e Selecione">
+    <div id="resultado2">?</div>
+    <script>
+
+        // Alterando destaque quando o mouse passa em cima com .hover()
+
+        const altenarDestaque = () => $('#div1').toggleClass('destaque');
+        $('#div1').hover(altenarDestaque, altenarDestaque); // 'hover' quando mouse passa em cima. Pode ter 2 funções aqui, uma qnd mouse entra e uma qnd sai.
+        // $('#div1').on('mouseenter mouseleave', altenarDestaque); // outra forma de fazer.
+
+        $('#div1').one('mouseenter', e => alert('Aviso Importante!')); // .one() quando entrar uma única vez, dispara alerta.
+        $('#div1').dblclick(e => $('#div1').fadeOut(1000).fadeIn(1000)); // .dblclick() função 'doble click'.
+
+        // Redimencionando página com .resize()
+
+        $(window).resize(function(e) {
+            const largura = $(window).width();
+            const altura = $(window).height();
+            $('#resultado1').html(`Largura: ${largura} e Altura: ${altura}`);
+        })
+
+        // Disparar evento quando seleciona parte de um texto com .select()
+
+        $(':input').select(e => {
+            const inicio = e.target.selectionStart;
+            const fim = e.target.selectionEnd;
+            $('#resultado2').html(e.target.value.substring(inicio, fim))
+        })
+
+    </script>
+</body>

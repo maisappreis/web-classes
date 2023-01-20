@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+
+        /* Todos os tipos de Seletores*/
+
+        * {
+            color: #ff0;
+            background-color: #f77;
+        }
+
+        .tag {
+            color: blue;
+        }
+
+        #aprovados {
+            color: pink;
+        }
+
+        /* Seleciona o elemento 'div' que está dentro de 'aninhado' (filho direto) */
+
+        #aninhado > div {
+            background-color: rgb(56, 215, 53);
+        }
+
+        /* Seleciona o elemento 'section' que está dentro de 'aninhado' (decendente, não é filho direto) */
+
+        #aninhado section {
+            background-color: #ff0;
+        }
+        /* Seleciona 'ul' que é irmão lado a lado de 'p'. Irmãos Adjacentes - Adjacent Sibling */
+
+        p + ul {
+            background-color: purple;
+        }
+
+        /* Seleciona 'ol' que é irmão de 'p', mas não lado a lado. Irmãos Gerais - General Sibling: */
+
+        p ~ ol {
+            background-color: orangered;
+        }
+
+        /* Seleciona todos com a propriedade 'feira' */
+
+        [feira] {
+            background-color: green;
+        }
+
+        [feira=casa] {
+            background-color: rgb(203, 0, 176);
+        }
+
+        /* O valor de 'feira' é 'escritorio empresa', mas se colocar o '~' ele encontra apenas por 'escritorio' */
+
+        [feira~=escritorio] {
+            background-color: rgb(203, 0, 176);
+        }
+
+        /* Ele encontra o valor 'sa' dentro de 'caSA' e dentro de 'escritorio empreSA' */
+
+        [feira*=sa] {
+            background-color: rgb(203, 0, 176);
+        }
+
+        /* Selecionar a tag 'span' que seja o primeiro filho de alguém */
+
+        span:nth-child(1) {
+            background-color: rgb(236, 135, 4);
+        }
+
+        /* Selecionar os filhos ímpares de uma 'section' | (odd) = ímpar | (even) = par | ou pegar um específico (1)*/
+
+        section > :nth-child(odd) {
+            background-color: rgb(0, 209, 237);
+        }
+
+        /* Selecionar mais de 1 elemento com virgula: exemplo  ol, il {} */
+
+        section > :nth-child(even), p {
+            background-color: rgb(4, 0, 237);
+        }
+
+        /* Selecionar os filhos diretos de uma 'section' do tipo 'span', no exemplo abaixo, apenas o segundo elemento */
+
+        section > span:nth-of-type(2) {
+            color: white;
+            background-color: rgb(216, 0, 54);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag nolabel'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

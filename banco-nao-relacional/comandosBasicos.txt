@@ -1,0 +1,130 @@
+
+- COMANDOS NO MONGO DB
+
+> db.help()
+> cls (limpa a tela)
+> use wm
+> show collections
+> db.estados.insert({nome: "Acre", sigla: "AC", regiao: "Norte"})
+> show collections
+> show dbs
+> db.estados.save({nome: "Alagoas", sigla: "AL", regiao: "Nordeste", populacao: 33220000})
+> db.estados.find()
+> db.estados.find().pretty()
+> db.estados.insert({
+    _id: ObjectId(),
+... nome: "Rio de Janeiro",
+... sigla: "RJ",
+... regiao: "Sudeste",
+... cidades: [{
+... nome: "Niterói",
+... area: 133.9,
+... populacao: 485623
+... }]
+... })
+> db.estados.find().pretty()
+> db.estados.insert({
+... _id: ObjectId(),
+... nome: "São Paulo",
+... sigla: "SP",
+... regiao: "Sudeste",
+... cidades: [{
+... nome: "Campinas",
+... area: 795.7,
+... prefeito: "Jonas Donizetto",
+... populacao: 1081000}, {
+... nome: "Garulhos",
+... populacao: 1325000,
+... }, {
+... nome: "Sorocaba",
+... distanciaCapital: 87,
+... }]
+... })
+
+
+
+RESPOSTAS - JSON
+- Cada registro se trasforma em um JSON, e não em uma tabela.
+
+
+> db.estados.find()
+{ "_id" : ObjectId("62aa2737275a938e0ce5d74f"), "nome" : "Acre", "sigla" : "AC", "regiao" : "Norte" }
+{ "_id" : ObjectId("62aa27b3275a938e0ce5d750"), "nome" : "Alagoas", "sigla" : "AL", "regiao" : "Nordeste", "populacao" : 33220000 }
+
+> db.estados.find().pretty()
+{
+        "_id" : ObjectId("62aa2737275a938e0ce5d74f"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("62aa27b3275a938e0ce5d750"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 33220000
+}
+{
+        "_id" : ObjectId("62aa2925275a938e0ce5d751"),
+        "nome" : "Rio de Janeiro",
+        "sigla" : "RJ",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Niterói",
+                        "area" : 133.9,
+                        "populacao" : 485623
+                }
+        ]
+}
+
+> db.estados.find().pretty()
+{
+        "_id" : ObjectId("62aa2737275a938e0ce5d74f"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("62aa27b3275a938e0ce5d750"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 33220000
+}
+{
+        "_id" : ObjectId("62aa2925275a938e0ce5d751"),
+        "nome" : "Rio de Janeiro",
+        "sigla" : "RJ",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Niterói",
+                        "area" : 133.9,
+                        "populacao" : 485623
+                }
+        ]
+}
+{
+        "_id" : ObjectId("62aa36ab275a938e0ce5d752"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Campinas",
+                        "area" : 795.7,
+                        "prefeito" : "Jonas Donizetto",
+                        "populacao" : 1081000
+                },
+                {
+                        "nome" : "Garulhos",
+                        "populacao" : 1325000
+                },
+                {
+                        "nome" : "Sorocaba",
+                        "distanciaCapital" : 87
+                }
+        ]
+}

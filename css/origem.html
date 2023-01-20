@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+    </style>
+
+    <!-- link:scc - Atalho -->
+    <!-- Prevalece quem é processado por último, mas o 'inline' tem prioridade. Mas não é boa prática colocar inline -->
+
+    <link rel="stylesheet" href="css/externo.css">
+</head>
+
+ <!-- Não é recomendado colocar CSS inline, como o exemplo abaixo: -->
+ <!-- o IDEAL é: colocar os CSS em arquivos separados -->
+
+<body style="background-color: orange;">
+    <h1>E agora?</h1>
+</body>
+
+</html>

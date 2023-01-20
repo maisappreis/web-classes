@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <saudacao nome="Ana"></saudacao>
+        <saudacao nome="Bia"></saudacao>
+        <saudacao nome="Leo"></saudacao>
+    </div>
+
+    <script>
+        // Criando componentes com VUE.
+        // Essa função tem 2 parâmetros, primeiro nome do componente, e depois o escopo dele, ai pode ir de tudo.
+        // pode ter dentro seus próprios dados, templete, funçoes.
+
+        Vue.component("saudacao", {
+            props: ["nome"],
+            template: `
+                <div>Bom dia, {{ nome }}!</div>
+            `
+        })
+
+        new Vue({
+            el: "#app"
+        })
+
+    </script>
+</body>
+</html>

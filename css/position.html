@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style>
+        div {
+            font-size: 60px;
+            padding: 30px;
+            border: solid 5px #222;            
+        }
+
+        /* Não foi colocado 'position: static' porque já é o padrão do browser */
+
+        .static {
+            top: 100px;
+            left: 100px;
+            background-color: steelblue;
+        }
+
+        .fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 0px;
+            background-color: tomato;
+        }
+
+        /* a posição do 'relative1' é relativa a posição do componente anterior, no caso aqui, do 'static' */
+
+        .relative1 {
+            position: relative;
+            left: 50px;
+            top: 5px;
+            background-color: seagreen;
+        }
+
+        /* a posição do 'absolite1' é em relação a página como um todo, até ignorando as margens. */
+
+        .absolute1 {
+            position: absolute;
+            left: 350px;
+            top: 120px;
+            background-color: violet;
+        }
+
+        .relative2 {
+            position: relative;
+            left: 250px;
+            top: 2000px;
+            width: 200px;
+            height: 200px;
+            background-color: slategray;
+        }
+
+        /* a posição do 'absolite2' é em relação ao elemento pai, não mais em relação à página como um todo. Poruqe ele está dentro de uma 'div'. */
+
+        .absolute2 {
+            position: absolute; /* se o 'relative2' não estiver com 'position: relative', então o absolute será em relação a pagina. */
+            left: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+        }
+
+        /* o 'sticky' faz o elemento ficar preso na tela, por mais que role  */
+        
+        .sticky {
+            position: -webkit-sticky; /* serve para o safari, que não possui a propriedade padrão 'sticky' do CSS. */
+            position: sticky;
+            background-color: #777;
+            top: 0px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="static">Static (Padrão do browser)</div>
+    <div class="fixed">Fixed</div>
+    <div class="relative1">Relative</div>
+    <div class="absolute1">Absolute</div>
+
+    <div class="relative2">
+        <div class="absolute2"></div>
+    </div>
+
+    <div class="sticky">Sticky</div>
+    <p style="padding-bottom: 2000px;">Opa</p>
+</body>
+
+</html>

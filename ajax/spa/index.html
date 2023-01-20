@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+
+        // Vamos fazer uma mini SPA (single page aplication)
+        // Mas vai ser mais uma navegação com AJAX, porque vai ser simples, não vai ser uma aplicação de fato aqui.
+        // Por mais que navegue ali, se permanece na mesma página, na mesma URL.
+
+        // para que ocorra a mudança de URL com a navegação, ele inclui o terceiro parâmento 'push = true'
+
+        function navegarViaAjax(url, seletor, push = true) { // url: series.html | seletor: .pagina
+            if(!url || !seletor) return  // se não tiver url, ou não tiver seletor, ele já dá um return vazio pra sair da função.
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+                .then(resp => resp.text())
+                .then(html => {
+                    elemento.innerHTML = html
+                    if(push) {
+                        history.pushState({seletor}, "Página Ajax", url) // o segundo parâmentro ali é um título, pode colocar 'null' se não quiser colocar nada.
+                    }
+                })
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => { // pegando todos os 'wm-link'
+            const url = link.attributes['wm-link'].value;
+            const seletorDestino = link.attributes['wm-destino'].value;
+
+            link.onclick = e => { // capturar o evento do clique.
+                e.preventDefault()
+                navegarViaAjax(url, seletorDestino)
+            }
+        })
+
+        // Tirando os elementos da pilha. O histórico de navegação é tipo uma pilha.
+
+        window.onpopstate = e => {
+            if(e.state) {
+                navegarViaAjax(window.location.href, e.state.seletor, false)
+            }
+        }
+
+    </script>
+</body>

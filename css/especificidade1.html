@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity 
+        
+        Em linhas gerais...
+
+        1 - regra com !important (se sobrepõe as especifidades, mas deve ser evitado)
+        2 - seletores mais específicos (segundo mais relevante)
+        3 - em caso de empate de relevancia, o ultimo a ser processado será executado.
+
+        */
+
+        p {
+            background-color: gray;
+        }
+
+        /* Classe é mais específica, mais relevante do que TAG */
+        /* O !important faz aplicar a propriedade na força bruta, não é indicado | precisa ser a exceção */
+
+        .observacao {
+            color: white;
+            font-size: 40px;
+            border: dashed 5px yellow;
+            padding: 200px!important; 
+            background-color: purple;
+        }
+
+        /* Classe associada a uma TAG, é mais específica, mais relevante do que apenas a classe sozinha */
+
+        p.observacao {
+            color: rgb(238, 238, 0);
+            background: linear-gradient(to right, blue, yellow);
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

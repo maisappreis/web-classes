@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+        /* Media Query é para tornar a página mais responsiva, browser PC e browser celular, celular no modo paisagem ou na vertical.. */
+        /* Se a altura máxima do componente for 600px de largura (width), ele vai aplicar aquela propriedade ali para a classe */ 
+
+        @media (max-width: 600px) {
+            .muito-pequeno { display: block; } /* display: block (para ficar visível) e display: none (para ficar invisivel) */
+        }
+
+        @media (max-width: 1000px), (orientation: portrait) {  /* OU um deles acontece, OU o outro, para poder executar a classe. */
+            .pequeno-retrato { display: block;}
+        }
+
+        @media (min-width: 500px) and (max-width: 1000px) { /* Esse tem um 'AND', então ambos precisam ser verdadeiros para poder executar a classe. */
+            .intervalo { display: block; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

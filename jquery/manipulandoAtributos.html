@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando Atributos</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        [wm-relogio] {
+            text-align: center;
+        }
+
+        [wm-relogio] button {
+            font-size: 1.6em;
+            padding: 0px 25px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando Atributos</h1>
+    <div wm-relogio='1000'></div>
+    <div wm-relogio='3000'></div>
+    <script>
+        // Manipulando o atributo 'wm-relogio' da 'div', com a função attr().
+        // manipular o atributo é simples demais, mas ai ele resolveu fazer um problema mais elaborado.
+
+        function relogio(elemento) {  // esse elemento é da DOM, não do jQuery, não possui as funcionalidades.
+            const horaCerta = $('<p>').html(0); // criou um paragrafo para colocar a hora mais atual.
+            const botaoMenos = $('<button>').html('-'); // criou um botão de menos, para fazer o relogio se atualizar numa frequencia menor.
+            const botaoMais = $('<button>').html('+'); // criou um botão de mais, para fazer o relogio se atualizar numa frequencia maior.
+
+            const $elemento = $(elemento); // aqui ele transformou aquele elemento DOM, em elemento jQuery, com funcionalidades.
+            $elemento.append(horaCerta, botaoMenos, botaoMais)
+
+            const getIntervaloAtual = () => 
+                parseInt($elemento.attr('wm-relogio')) // Aqui de fato é o tema da aula: manipulando atributo.
+
+            let temporizador = null; // vai ter o resultado da função 'getIntervalo'.
+            const iniciar = () => {
+                if (temporizador) clearInterval(temporizador) // se o temporizador estiver vazio, ele dá um 'clearInverval', para o atual.
+                temporizador = setInterval(() => {  // cria um temporizador novo.
+                    horaCerta.html(new Date().toLocaleString('pt-BR')) // crie a data atual, em uma string, com a localização do Brasil. Atualizando com a data mais atual.
+                }, getIntervaloAtual()) // de quanto em quanto tempo vai ser chamado o temporizador.
+            }
+            const alterarIntervado = delta => {
+                const novo = Math.max(getIntervaloAtual() + delta, 1000); // ele vai pegar o maior dos dois, ou '1000' ou 'getIntervaloAtual() + delta'.
+                $elemento.attr('wm-relogio', novo);
+                iniciar() // reinicia o relogio.
+            }
+            botaoMais.click(e => alterarIntervado(1000)); // vai somar 1000 no clique, vai ficarm mais lento.
+            botaoMenos.click(e => alterarIntervado(-1000)); // vai subtrair 1000 no clique, vai ficar mais rápido
+            iniciar()
+        }
+
+        $('[wm-relogio]').each((indice, elemento) => new relogio(elemento)); // esse elemento é o elemento da DOM. 
+
+        // Outras coisas importantes.
+
+        $('[wm-relogio]').attr('opa'); // lendo atributo.
+        $('[wm-relogio]').attr('opa', 3); // alterando ou incluindo atributo.
+        $('[wm-relogio]').attr({ opa: 1, novo: true }); // adicionando novos atributos.
+        $('[wm-relogio]').removeAttr('opa').removeAttr('novo'); // removendo atributos.
+
+    </script>
+</body>

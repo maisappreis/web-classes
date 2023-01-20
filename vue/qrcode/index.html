@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.min.js"></script>
+    <script src="js/qrious.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Gerador de QRCode</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <input type="text" size="25" placeholder="Digite para gerar um QRCode.." :value="text" @input="onData">
+
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+    </div>
+
+    <script>
+        // Esse aqui gera o QR Code: js/qrious.min.js
+        // Lembrando que ":" e "@" são os atributos manipulados pelo VUE.
+        // mas tudo que está abaixo de id="app" está sendo monitorado.
+
+        // se eu retirar toda a parte de 'methods', substituir ':value' por 'v-model', e retirar o '@input="onData', também funciona.
+
+        new Vue({  // inicia criando uma 'instance VUE'.
+            el: "#app",
+            data: {
+                title: "Gerador QRCOde",
+                text: "https://www.cod3r.com.br",
+                qrcode: new QRious({ size: 300 }), // apontando para uma instância da dependencia que foi importada lá em cima, 'qrious'.
+            },
+            computed: {
+                newQRCode() { // para cada texto gerado, se criará um novo QRCode.
+                    this.qrcode.value = this.text;
+                    return this.qrcode.toDataURL()
+                }
+            },
+            methods: {
+                onData(event) { // sempre que o usuário digitar algo no 'input' ele chama a função 'onData'
+                    this.text = event.target.value; // associa ao texto, e altera o valor.
+                }
+            }
+        }) 
+
+    </script>
+</body>
+
+</html>

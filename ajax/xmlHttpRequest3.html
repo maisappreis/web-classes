@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Requisição AJAX usando XML.
+
+        function ajax(config) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(config.metodo, config.url, true); // para ser assíncrono.
+
+            // sempre que o status da requisição mudar, esse evento abaixo será chamado.
+
+            xhr.onreadystatechange = e => {
+                if (xhr.readyState === 4) { // ou seja, se a requisição foi concluida.
+                    if (xhr.status === 200) {
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400) {
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
+        }
+
+        ajax({
+            url: "dados/estados.xml",
+            metodo: "get",
+            sucesso(resposta) {
+                console.log(resposta);
+                const estados = resposta.getElementsByTagName('estado'); // é uma lista de estados.
+                const itens = Array.from(estados).reduce( // convertendo para um array.
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, '' // inicia uma string vazia, e pra cada interação, vai adicionando uma 'li'.
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`); // antes do final do 'body', insere a lista
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`);
+                document.body.appendChild(msg);
+            }
+        })
+
+    </script>
+</body>

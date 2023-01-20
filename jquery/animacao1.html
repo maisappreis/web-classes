@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Animação #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        div {
+            text-align: center;
+        }
+        button {
+            font-size: 1.8em;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Animação #01</h1>
+    <button>Iniciar</button>
+    <div id='animar'>Animar!</div>
+
+    <script>        
+        // Primeiro vai definir o tempo da animação. 
+        // Para animar, precisa selecionar o botão e chamar a função click, e ai passa uma callback, que será chamada qnd clicar.
+
+        $('button').click(e => {
+            const tempo = 500;      // tempo em milisegundos. Meio segundo.
+            $('#animar').hide(tempo).show(tempo);
+            $('#animar').toggle(tempo).toggle(tempo);
+            $('#animar').fadeOut(tempo).fadeIn(tempo);
+            $('#animar').fadeToggle(tempo).fadeToggle(tempo);
+            $('#animar').slideUp(tempo).slideDown(tempo);
+            $('#animar').slideToggle(tempo).slideToggle(tempo);
+        })
+
+    </script>
+</body>

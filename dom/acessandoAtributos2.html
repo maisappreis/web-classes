@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        const lista = document.querySelector('div ul[destino="escritório"]'); // mesma coisa que colocar ('#compras').
+        console.log('Elemento "ul"...............');
+        console.log('childNodes', lista.childNodes); // NodeList [text, li, text, li.....]  
+        console.log('destino', lista.id); // console: compras      
+        console.log('destino', lista.destino); // console: undefined, porque 'destino' é uma propriedade personalizada. O browser desconsidera.
+        console.log('getAttribute', lista.getAttribute('destino')); // console: escritório | com o .getAttribute() funciona, ele considera as propriedades criadas, personalizadas.
+        console.log('hasAttribute', lista.hasAttribute('destino')); // console: true | retorna verdadeiro para TEM o Atributo.
+        lista.setAttribute('destino', 'empresa'); // Altera atributo. Dando um 'inspecionar elemento', nota-se que agora o 'destino=empresa', não mais 'destino=escritório'.
+        lista.setAttribute('status', 'aberto'); // Cria atributo que antes não existia.
+        lista.removeAttribute('destino'); // .removeAttribute() deleta Attributo.
+
+        // Existe um tratamento diferenciado quando se usa o prefixo 'data-', 
+        // que é um prefixo esperado pela especificação dos atributos personalizados.
+
+        console.log(lista.dataset); // console: {urgencia: "5"} | quando a 'chave' tem um nome com traços, fica um pouco diferente.
+        console.log(lista.dataset.urgencia) // console: "5"
+        lista.dataset.urgencia = 4; // alterou de '5' para '4'
+        console.log(lista.getAttribute('data-urgencia'));  // console: "4"
+
+        // CUIDADO: nem sempre o atributo que está definido no HTML estará disponivel para vc acessar com o mesmo nome.
+
+        const label = document.querySelector('label');
+        console.log(label.for); // undefined. Como é uma palavra reservada da linguagem, o 'for' não pode ser um identificador, uma chave.
+        console.log(label.htmlFor); // console: compras | com a notação ponto, precisa colocar o 'html' na frente.
+        console.log(label.getAttribute('for')); // console: compras
+
+    </script>
+</body>
+
+</html>

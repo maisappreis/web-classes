@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #02</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>Div2</div>
+    <div id='div3'>Div3</div>
+    <p class='numero'>4</p>
+    <p class='numero'>5</p>
+    <div id='div5'>Div5</div>
+    <div id='div6'>Div6</div>
+    <div id='div7'>Div7</div>
+
+    <script>
+
+        $('#div1').append(', 2');
+        $('#div1').prepend('0, ');
+        $('<span>, 3</span>').appendTo('#div1');
+        $('<span>-1, </span>').prependTo('#div1');
+
+        $('#div2').before('<p>Antes da Div2</p>');
+        $('#div2').after('<p>Depois da Div2</p>');
+
+        $('<p>Antes da Div3</p>').insertBefore('#div3');
+        $('<p>Depois da Div3</p>').insertAfter('#div3');
+
+        // Wrap: envolver os <p> em uma <div>
+        
+        $('p.numero').wrap('<div>'); // ele cria uma 'div' e joga os elementos para dentro dela.
+        $('p.numero').wrapAll('<div id="div4">') // envolveu todas naquela classe ali em uma só 'div'.
+
+        $('#div5').empty(); // esvazia o elemento | .remove() deleta o elemento, e depois precisaria reconstrui-lo.
+
+        $('<div>Substitui</div>').replaceAll('#div6');
+        $('#div7').replaceWith('<div>Substitui</div>');
+        $('#div7').replaceWith(function() {
+            return $('<div>').html($(this).html()) // O HTML do elemento atual está sendo colocado dentro do HTML dessa 'div' que eu acabei de criar.
+        });
+
+    </script>
+</body>

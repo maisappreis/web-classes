@@ -1,0 +1,134 @@
+COMANDOS TERMINAL
+
+- CTRL + P >> abrir pesquisa no VSCode
+- Navegar pelas pastas: cd nomeDaPasta
+- Voltar uma pasta no terminal: cd ..
+- Parar execução do terminal: CTRL + C + ENTER
+~ pode variar o 'patch' ou 'fix'.
+^ pode variar o 'minor' e o 'fix.
+pode variar o 'major'.
+
+- major.minor.patches
+- breaking.feature.fix
+
+Package.json
+
+Criar packjson:
+PS C:\pasta\dentro-da-pasta> npm init -y
+
+Quando adicionado as dependencias manualment no arquivo "package.json":
+PS C:\pasta\dentro-da-pasta-onde-esta-esse-json> npm i
+
+_____________________________________________________
+
+REACT
+
+Instalar as dependencias do REACT (frontend):
+PS C:\pasta\dentro-da-pasta> npx create-react-app
+
+_____________________________________________________
+
+JSON Server
+
+Instalar as dependencias do JSON Server (backend):
+PS C:\pasta\dentro-da-pasta> npm i --save json-server@0.13.0 -E
+
+_____________________________________________________
+
+Nodemon
+
+Usado mais em desenvolvimento.
+Instalar Nodemon:
+PS C:\pasta\dentro-da-pasta> npm i --save nodemon
+
+Para ele ficar ouvindo e atualizando a página: nodemon server.js
+_____________________________________________________
+
+PM2
+
+Usado mais em produção.
+Instalar: npm install pm2 -g
+Startar: pm2 start app.js
+Comandos: pm2 monit | pm2 status | pm2 show 0 | pm2 restart 0 | pm2 stop 0 | pm2 kill
+_____________________________________________________
+
+Express e Parser
+
+Instalar as dependencias do Express e do Parser:
+PS C:\pasta\dentro-da-pasta> npm i --save express@4.16.3 body-parser@1.18.2 -E
+_____________________________________________________
+
+AXIOS
+
+É um cliente http, caso precise fazer chamadas AJAX para o Json Server, por exemplo.
+_____________________________________________________
+
+Next.js
+
+Criar aplicativo Next.js:
+PS C:\pasta\dentro-da-pasta> npx create-next-app
+PS C:\pasta\dentro-da-pasta> npm run dev
+_____________________________________________________
+
+VUE.js
+
+Criar aplicação em VUE
+PS C:\pasta\dentro-da-pasta> vue create nome-da-aplicacao
+
+_____________________________________________________
+
+Electron
+
+Adicionando plugin:
+PS C:\pasta\dentro-da-pasta> vue add electron-builder
+Executando o servidor:
+PS C:\pasta\dentro-da-pasta> npm run electron:serve
+
+_____________________________________________________
+
+Vuetify - Biblioteca VUE UI (user interface)
+
+Adicionando plugin:
+PS C:\pasta\dentro-da-pasta> vue add vuetify
+
+_____________________________________________________
+
+Angular
+
+Instalar Angular: npm i -g @angular/cli
+Criar aplicação: ng new nome-do-app
+
+>> ele cria uma pasta para cada componente com seus 2 arquivos: HTML, CSS e TS
+
+Criar um componente: ng g c components/template/nome-arquivo
+Criar um componente: ng g c components/product/nome-arquivo
+
+Criar um service: ng g s services/nome-arquivo
+Criar uma diretiva: ng g d directives/nome-arquivo
+Criar uma tabela: ng generate @angular/material:table components/nome-pasta/nome-arquivo
+_____________________________________________________
+
+My SQL
+
+No VSCode dá CTRL + P e digita: ">mysql"
+C:\Users\maisa>mysql -u root -p
+C:\Users\maisa>mysql>create schema nome-do-esquema;
+_____________________________________________________
+
+Mongo
+
+Robo 3T ferramenta visual do Mongo.
+Startar no prompt de cmd do Windowns: mongod
+
+mongo --version
+mongo
+cls (limpa)
+help (aparecem todas as opções de comando)
+_____________________________________________________
+_____________________________________________________
+_____________________________________________________
+_____________________________________________________
+_____________________________________________________
+_____________________________________________________
+
+

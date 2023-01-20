@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }} ">Não funciona assim!</a></p>
+        <p><a v-bind:href="link">Funciona com >> v-bind:href=</a></p><p>
+            <a :href="link">Forma reduzida >> :href=</a></p>
+            <p>
+                <input type="text" v-model="nome"><br>
+                <span>{{ nome }}</span>
+            </p>
+    </div>
+
+    <script>
+
+        // 'v-bind:' === ':'
+        // o 'binding' consegue interpolar links, usando 'v-bind:href='        
+        // pode usar com qualquer propriedade do HTML, para dizer que precisa interpolar com o VUE. É uma diretiva.
+        // o 'v-model=' seria o 'binding' bidirecional, atualização em 2 direções.
+        
+        new Vue({
+            el: "#app",
+            data: {
+                nome: "Maira",
+                link: "https://youtube.com"
+            },
+            watch: { // consegue responder as alterações dos atributos colocados ali em cima.
+                nome(novoValor) {
+                    console.log(novoValor.toUpperCase())
+                }
+            }
+        })
+    </script>
+</body>
+</html>

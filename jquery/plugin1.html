@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Plugin #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Plugin #01</h1>
+    <div>
+        {{ 1 + 2 }}  <br>
+        Texto 1  <br>
+        {{ 3 ** 3 }}  <br>
+        Texto 2  <br>
+        {{ console.log('Funcionou!') }}  <br>
+        Texto 3  <br>
+        {{ (function() { return 'Legal!!!' })() }}  <br>
+        Texto Final
+    </div>
+
+    <script>
+
+        // Plugin Função eval()
+
+        // Expressão delimitada por dupla chaves {{}}, e ai coloca um código que será interpretado por algum framework.
+        // No caso aqui, ele colocou dentro das chaves, expressões JavaScripts, para que ele leia, e rode o código.
+
+        // Colocar o plugin dentro de uma função que vai proteger a variável $.
+
+        // const $ = { nome: 'Não é o jQuery' }; // porque alguem pode fazer isso, colocar uma outro valor atribuido a variável $.
+
+        // Assim, pode-se fazer uma Função AutoInvocada para o $ do jQuery.
+
+        (function($) {
+            $.fn.interpretar = function() {
+                const retirarChaves = s => s.substring(2, s.length - 2); // tirando os 2 primeiros caracteres e os 2 ultimos de uma 'substring'. Ou seja, retirar as chaves.
+                const conteudo = $(this).html();
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g); // REGEX. Duas chaves literais: \{\{ e qualquer conteúdo no meio: .+ e expressão global: /g 
+                const expressoes = expressoesComChaves.map(retirarChaves);
+                const resultados = expressoes.map(e => eval(e)); // resultado vai armazenar os 'eval(e)'
+
+                let conteudoFinal = conteudo
+                for(let i = 0; i < expressoesComChaves.length; i++) {
+                    conteudoFinal = conteudoFinal.replace(expressoesComChaves[i], resultados[i])
+                }
+                $(this).html(conteudoFinal)
+                return this // para poder encadear com outras chamadas.
+            }
+        })(jQuery)
+
+        $('div').interpretar();
+
+        // Expressão Regular ou "Regex": provê uma forma concisa e flexível de identificar cadeias de caracteres de interesse, como caracteres particulares, palavras ou padrões de caracteres.
+
+    </script>
+</body>

@@ -1,0 +1,31 @@
+
+
+>tsc --init (cria arquivo tsconfig.json)
+>npm init -y (cria package.json)
+>npm i -s live-server (link com o browser e faz os reloads automáticos)
+>tsc -w (fica monitorando e convertendo TypeScript em JavaScript - compilador)
+
+COMMONJS - import e export dentro do Node, que usa esse padrão de módulos.
+const moduloA = require("")
+module.exports = {
+    ......
+}
+
+
+CONFIGURADO tsconfig.json
+
+"target": "es5", (versão será usada do JS na conversão)
+"noEmitOnError": true, (para não criar o arquivo JS se tiver erro no TS. E false para criar)
+"sourceMap": true, (é possível ver o arquivo TS no browser, mesmo que, o browser não leia e entenda TS)
+"noImplicitAny": true, (precisa explicitar quando for tipo Any)
+
+"strictNullChecks"  (se pode gerar um valor Nulo ou não, função pode ou não retornar nulo)
+"noUnusedParameters" (se pode ou não ter parametros sem serem usados)
+"noUnusedLocals" (se pode ou não ter variáveis locais (dentro de função) sem serem usadas)
+
+"outDir" (ficar compilando os arquivos em uma pasta externa, de build por exemplo)
+"outFile": "./build/app.js", (gerar um unico arquivo de saída, mas precisa alterar o "module": "system", pois o "commonjs" não aceita)
+
+Links Úteis:
+https://www.typescriptlang.org/docs/handbook/tsconfig-json.html 
+https://www.typescriptlang.org/docs/handbook/compiler-options.html 

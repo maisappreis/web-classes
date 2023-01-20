@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        
+        // Como modificar a DOM (estrutura do HTML), principalmente, criar novos elementos, usando JavaScript.
+
+        const body = document.querySelector('body');
+        const div1 = document.createElement('div'); // ele cria uma 'div'.
+        div1.classList.add('destaque'); // ele adiciona uma classe 'destaque' para a 'div' criada.
+        div1.innerHTML = 'Texto div 1'; // colocou um texto/conteúdo na 'div1'.
+
+        const div2 = document.createElement('div'); // criou uma segunda 'div'.
+        div2.setAttribute('wm-atributo', 'valor'); // adicionou um atributo personalizado a esta 'div2'.
+        div2.innerHTML = 'Texto div 2'; // colocou um texto/conteúdo na 'div2'.
+
+        const p = document.createElement('p'); // cria um paragráfo.
+        p.innerHTML = "Texto do parágrafo que está dentro da div3";
+        const div3 = document.createElement('div'); // cria uma terceira 'div'.
+        div3.appendChild(p); // anexou o 'p' dentro da 'div3', na ultima posição, ultimo filho. Append = acrescentar, anexar.
+
+        body.appendChild(div1); // Anexou a 'div1' dentro do 'body'.
+        body.appendChild(div2); // Anexou a 'div2' dentro do 'body'.
+        body.appendChild(div3); // Anexou a 'div2' dentro do 'body'.
+
+        const texto = document.createTextNode('Antes....'); // Cria um texto. Também poderia usar o .createElement() aqui
+        div3.insertBefore(texto, div3.childNodes[0]); // pede para inserir o texto antes do nó 1, antes do elemento[0]
+
+        const div4 = div3.cloneNode(true); // cria um clone da 'div3'. A 'div4' é um clone da 'div3'. TRUE ele clona TUDO, filhos e tudo mais.
+        body.appendChild(div4); // Anexou a 'div4' dentro do 'body'.
+        body.removeChild(div3); // Remove a 'div3'.
+
+    </script>
+</body>
+
+</html>

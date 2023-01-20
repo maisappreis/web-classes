@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+
+        // A partir de .classList() é possível: adicionar, remover, função Toggle, se está contido ou não em algum elemento.
+        // função Toggle: se não tiver, ele adiciona e se tiver, ele remove. Fica alternando a existencia de uma classe em um determinando elemento.
+
+        const div = document.querySelector('div');
+        const classes = div.classList;
+        classes.add('destaque'); // 'destaque' está dentro de 'estilo.css'
+        classes.remove('destaque');
+        classes.toggle('destaque'); // alternando. Se não tem, coloca. Se tem, remove.
+        console.log(classes.contains('destaque')); // TRUE | checar se está contido ou não contido.
+        console.log(classes.length); // 1
+        classes.toggle('destaque');
+        console.log(classes.length); // 0 | agora é 0 porque a única classe que tinha, eu removi na linha anterior.
+
+        classes.add('destaque1'); // Não existem essas classes, mas adicionando para teste.
+        classes.add('destaque2');
+        console.log(classes.length); // 2
+
+        for(let c of classes) {
+            console.log(c)        // console: destaque1 destaque2
+        }
+
+        classes.forEach(c => console.log(c)); // console: destaque1 destaque2
+
+        // DOMTokenList possui o FOR e o FOREACH no código nativo.
+
+        // No CONSOLE:
+        // dir(document.querySelector('div').classList)
+        // retorna: DOMTokenList(2)     0: "destaque1"    1: "destaque2"    length: 2    value: "destaque1 destaque2"     [[Prototype]]: DOMTokenList
+
+        // No CONSOLE, para me retornar um array.
+        // Array.from(classes)
+        // [...classes]
+
+    </script>
+</body>
+
+</html>

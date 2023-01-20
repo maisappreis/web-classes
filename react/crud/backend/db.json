@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Arthur Oliceira",
+      "email": "aooliveira@cod3r.com.br"
+    },
+    {
+      "id": 2,
+      "name": "Maria da Silva",
+      "email": "mjds@empresa.com"
+    },
+    {
+      "name": "Maisa P. Preis",
+      "email": "maisapierinipreis@gmail.com",
+      "id": 3
+    },
+    {
+      "name": "Renan Bernhardt",
+      "email": "renan@gmail.com",
+      "id": 4
+    }
+  ]
+}

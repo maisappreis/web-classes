@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <contador></contador>
+        <contador></contador>
+        <contador></contador>
+    </div>
+
+    <script>
+        // Criando componentes com VUE.
+        // Essa função tem 2 parâmetros, primeiro nome do componente, e depois o escopo dele, ai pode ir de tudo.
+        // pode ter dentro seus próprios dados, templete, funçoes.
+
+        // Em componente, dentro de 'data:' precisa ser uma função, que retorne um objeto.
+        // Para cada instância do componente, retornar um novo objeto.
+
+        // http://192.168.0.104:8080/componente2.html
+
+        Vue.component("contador", {
+            data: function() {
+                return {
+                    contador: 0
+                }
+            },
+            methods: {
+                add() {
+                    this.contador++
+                }
+            },
+            template: `
+                <div>
+                    <span>{{ contador }}</span>
+                    <button @click="add">+1</button>
+                    <button @click="contador--">-1</button>
+                </div>
+            `
+        })
+
+        new Vue({
+            el: "#app"
+        })
+
+    </script>
+</body>
+</html>

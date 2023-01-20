@@ -1,0 +1,52 @@
+<h1>Formulário</h1>
+
+<!-- Frontend do Formulário -->
+<!-- Faz uma requisição para esta URL, dentro do formulário terá alguns inputs, -->
+<!-- Lá em 'server.js' é onde ficará o backend deste formulário, rodar e receber a requisição do tipo POST -->
+
+<form method="post">
+    <input type="hidden" name="id" value="3">
+    <input type="text" name="nome">
+    <input type="password" name="senha">
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin">Admin
+        <input type="radio" name="tipo" value="regular">Regular
+        <input type="radio" name="tipo" value="professor">Professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+
+    <select name="estado">
+        <option>Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="sp">São Paulo</option>
+        <option value="rj">Rio de Janeiro</option>
+        <option value="sc">Santa Catarina</option>
+    </select>
+
+    <select name="interesses" multiple>
+        <option value="js">JavaScript</option>
+        <option value="java">Java</option>
+        <option value="python">Python</option>
+        <option value="go">GoLand</option>
+        <option value="c">C</option>
+    </select>
+
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button>
+</form>
+
+<style>
+    input, textarea, select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
+        display: inline;
+    }
+</style>

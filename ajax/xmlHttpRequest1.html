@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+
+        // Requisição AJAX usando JSON.
+        
+        // Ajax, técnica usada com JavaScript para atualizar a página, ou parte dela, sem recarregar.
+        // Se comunica com Servidor Web de forma assíncrona. Envia e recebe dados em background.
+        // uma função, que dentro dela terá uma requisição Ajax.
+
+        function ajax(config) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(config.metodo, config.url, true);
+
+            xhr.onload = e => {
+                if (xhr.status === 200) { // status da cada dos 200 é status de sucesso para o http.
+                    config.sucesso(xhr.response)
+                } else if (xhr.status >= 400) { // entre 400 e 500 é erro do cliente ou do servidor.
+                    config.erro({
+                        codigo: xhr.status,
+                        texto: xhr.statusText
+                    })
+
+                }
+            }
+            xhr.send() // no final da um 'send' para ele enviar a requisição.
+        }
+
+        function criarTabela(estados) {
+            const linhas = estados.map(estado => { // transformando o array de estados, em um array de elementos da DOM.
+                const tdId = document.createElement('td'); // cada um dos objetos em uma linha da tabela, 'table row'.
+                tdId.innerHTML = estado.id;
+
+                const tdNome = document.createElement('td');
+                tdNome.innerHTML = estado.nome;
+
+                const tdSigla = document.createElement('td');
+                tdSigla.innerHTML = estado.sigla;
+
+                const tr = document.createElement('tr');
+
+                tr.appendChild(tdId);
+                tr.appendChild(tdNome);
+                tr.appendChild(tdSigla);
+
+                return tr
+            })
+
+            const tabela = document.createElement('table'); // adicionar cada uma das linhas na tabela.
+            linhas.forEach(linha => tabela.appendChild(linha));
+            document.body.appendChild(tabela); // adicionar a tabela no 'body'
+        }
+
+        // isso aqui abaixo é todo o parâmentro 'config' da função acima. É um objeto.
+
+        ajax({
+            url: "dados/estados.json",
+            metodo: "get",
+            sucesso(resposta) {
+                const estados = JSON.parse(resposta); // vai criar uma tabela usando a DOM.
+                criarTabela(estados)
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+            }
+        })
+    </script>
+</body>

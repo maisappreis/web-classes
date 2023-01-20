@@ -1,0 +1,139 @@
+<!-- Título (jumbotron) -->
+<!-- https://getbootstrap.com/docs/4.0/components/jumbotron/ -->
+
+<div class="jumbotron p-4 my-1">
+    <h1 class="display-4">Fundamentos</h1>
+    <p class="lead m-1">Alguns recursos importantes do Bootstrap.</p>
+</div>
+
+<!-- Breadcrumb -->
+<!-- https://getbootstrap.com/docs/4.0/components/breadcrumb/ -->
+<!-- aria-label (acessibilidade) -->
+
+<nav class="mb-5">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#/paginas/bemVindo.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Fundamentos</li>
+    </ol>
+</nav>
+
+
+<div class="exercicio">
+    <h1>1. Tipografia -
+        <small>
+            <a href="https://getbootstrap.com/docs/4.0/content/typography/" target="_black">Documentação Oficial</a>
+        </small>
+    </h1>
+    <hr>
+
+    <ul>
+        <li><strong>Reboot</strong> - Torna consistente o estilo entre diferentes browser!</li>
+        <li><strong>Rems</strong> - Baseado no raiz</li>
+        <li>Evita <strong>margin-top</strong> - Provavelmente será necessário adicionar algum espaço</li>
+        <li><strong>box-sizing</strong> border-box</li>
+        <li>Fontes nativas</li>
+    </ul>
+
+    <h1 class="mt-5">2. Espaços -
+        <small>
+            <a href="https://getbootstrap.com/docs/4.0/utilities/spacing/" target="_black">Documentação Oficial</a>
+        </small>
+    </h1>
+    <hr>
+
+<!-- CLASSES Utilitárias do próprio Bootstrap -->
+
+    <!-- Atalhos VSC: -->
+    <!-- (header.cabecalho>h1)+(aside>nav>ul>li) Basta dar ENTER -->
+    <!-- .conteudo[id="legal"] -->
+
+    <!-- mb-5 = margem bottom de 5 (5 é o máximo) -->
+    <!-- m4 = margem de 4 -->
+    <!-- py-4 = padding de 4 no eixo Y (em cima e em baixo)  -->
+    <!-- pt-e = padding top de 5 -->
+
+    <!-- mx, my, px, py = margin e padding no X e Y -->
+    <!-- mb, mt, ml, mr = margin bottom, top, left, right -->
+    <!-- pb, pt, pl, pr = padding bottom, top, left, right -->
+
+    <div class="mb-5">1</div>
+    <div class="m-4 py-4">2</div>
+    <div class="pt-5">3</div>
+
+
+    <h1 class="mt-5">3. Cores -
+        <small>
+            <a href="https://getbootstrap.com/docs/4.0/utilities/colors/" target="_black">Documentação Oficial</a>
+        </small>
+    </h1>
+    <hr>
+
+    <!-- CORES -->
+    <!-- bg = cor do background -->
+    <!-- text = cor do texto -->
+
+    <div class="my-1 p-3 bg-primary text-light">1</div>
+    <div class="my-1 p-3 bg-danger text-white">2</div>
+    <div class="my-1 p-3 bg-warning text-success">3</div>
+
+
+    <h1 class="mt-5">4. Flex -
+        <small>
+            <a href="https://getbootstrap.com/docs/4.0/utilities/flex/" target="_black">Documentação Oficial</a>
+        </small>
+    </h1>
+    <hr>
+
+    <!-- FLEXBOX -->
+    <!-- A DIV é um FLEX CONTAINER, e dentro dela, têm os FLEX ITENS -->
+    <!-- sm = small (dispositivos pequentos) -->
+    <!-- lg = large (dispositivos grandes) -->
+    <!-- xl = extra large -->
+
+    <div class="d-sm-flex flex-column-reverse p-2">
+        <div class="align-self-end">1</div>
+        <div class="align-self-center">2</div>
+        <div class="align-self-start">3</div>
+    </div>
+
+
+    <h1 class="mt-5">5. Imagens -
+        <small>
+            <a href="https://getbootstrap.com/docs/4.0/content/images/" target="_black">Documentação Oficial</a>
+        </small>
+    </h1>
+    <hr>
+
+    <!-- IMAGENS -->
+    <!-- img-thumbnail e fluid são mais responsivas, se ajustam melhor à pagina -->
+
+    <div class="p-2">        
+        <img src="/imgs/img1.png" alt="Imagem 1" class="mx-auto d-block" width="400">
+        <img src="/imgs/img1.png" alt="Imagem 1" class="img-thumbnail" width="400">
+        <img src="/imgs/img1.png" alt="Imagem 1" class="img-fluid rounded-circle" width="400">
+    </div>
+
+    <h1 class="mt-5">6. Float -
+        <small>
+            <a href="https://getbootstrap.com/docs/4.0/utilities/float/" target="_black">Documentação Oficial</a>
+        </small>
+    </h1>
+    <hr>
+
+    <!-- FLOAT -->
+    <!-- Prefira flexbox à float -->
+
+    <div class="my-1 p-3 float-left">1</div>
+    <div class="my-1 p-3 float-right">2</div>
+    <div class="my-1 p-3 float-lg-right float-xl-left">3</div>
+
+</div>
+
+<style>
+    .exercicio div {
+        border: solid 8px #000;
+        font-size: 2rem;
+    }
+</style>

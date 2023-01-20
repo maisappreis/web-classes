@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Um pouco de CSS</title>
+        <link rel="stylesheet" href="poucoDeCSS.css">
+        <style>
+            h1 {
+                background-color: purple;
+                font-size: 30px;
+                position: absolute;
+                left: 400px;
+            }
+
+            .fundoVermelho {
+                background-color: #ff0000;
+            }
+
+            .negrito {
+                font-weight: bold;
+            }
+
+            #textoPrincipal {
+                font-size: 40px;
+                font-weight: bold;
+                color: #fff;
+                padding: 10px;
+                background-color: #444;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <span id="textoPrincipal">Texto 1</span><br><br><br>
+        <span class="fundoVermelho negrito">Texto 2</span><br>
+        <span class="fundoVermelho" atributo-criado>Texto 3</span><br>
+        <span class="tantoFaz">Texto 4</span>
+    </body>
+</html>
+
+
+<!-- o CSS em si entá dento da parte "STYLE"-->
+<!-- o 'br' é a quebra de linha -->
+<!-- cores tem 6 dígitos, 2 pra red, 2 pra green e 2 pra blue OU o RGB de 0 a 255-->
+
+<!-- o 'id' é um tipo de identificador, deve ser único dentro da página inteira -->
+<!-- um 'id' no CSS é criado a partir do #nomeDoId -->
+
+<!-- a 'class' também é um tipo de identificador, associada ao estilo, pode-se aplicar mais de uma vez, pode marcar um elemento com mais de uma classe -->
+<!-- uma 'class' no CSS é criada a partir do .nomeDaClasse -->
+
+<!-- pegar id ou classe no Console com: document.querySelector(".nomeDaClasse") ou ("#nomeDoId") ou ("[atributo-criado]") -->

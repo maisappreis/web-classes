@@ -1,0 +1,15 @@
+
+/* CSS modularizado .module.css */
+
+.roxo {
+    height: 100%;
+    background-color: #670bbd;
+    color: #fff;
+}
+
+.roxo h1 {
+    margin: 0;
+}
+
+/* Dentro de um CSS modularizado, eu não posso por exemplo criar um estilo para h1 {}, pois isso mudaria todos os h1  */
+/* Precisa ter uma classe ou um ID */

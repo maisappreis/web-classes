@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        console.log(document.forms); // no console do browser: HTMLCollection [form, pesquisa: form]
+        console.log(document.forms[0]); // tras todo o form <form...>......</form>
+        console.log(document.getElementsByName('pesquisa')); // tras uma NodeList
+        console.log(document.pesquisa); // retorna o form <form...>......</form>
+        console.log(document.pesquisa.q); // retorna <input type="text" name="q" placeholder="Digite o termo...">
+
+        document.pesquisa.q.value = 'Linux Brasil';
+        document.pesquisa.hl.value = 'en-us';
+
+        console.log(document.pesquisa.hl.selectedIndex); // retornou 1 como o elemento selecionado do Index
+    </script>
+</body>
+
+</html>
+
+<!-- https://www.google.com.br/search?q=Linux&hl=en-us&gws_rd=ssl -->
+
+<!-- q=Linux | 'q' é o termo da pesquisa -->
+<!-- hl=en-us | 'hl' é a lingua escolhida -->

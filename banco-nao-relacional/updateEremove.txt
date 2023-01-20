@@ -1,0 +1,25 @@
+
+- UPDATE
+
+- Primeira parte é o FILTRO e a segunda parte é a ALTERACAO.
+- > db.estados.update({FILTRO},{$set: {ALTERACAO}})
+
+
+> db.estados.update({sigla: "SP"},{$set: {populacao: 453400000}})
+> db.estados.update({sigla: "AL"},{$set: {cidades: [{nome: "Sergipe"}]}})  ---> Aqui ele criou o atributo 'cidades'
+> db.estados.update(
+... {sigla: "SP"},
+... {$push: {cidades: {nome: "Santos", populacao: 433526}}}
+... ) ---> aqui ele adicionou uma cidade.
+
+> db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})
+
+
+- REMOVE
+
+> db.estados.count() // 4
+> db.estados.remove({sigla: "AC"})
+> db.estados.remove({populacao: {$exists: true}},1)
+> db.estados.remove({populacao: {$lt: 20000000}})
+
+ps: $lt significa 'last than' ou seja, filtrou a populacao menor que 20mi habitantes.

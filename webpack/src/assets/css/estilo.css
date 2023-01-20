@@ -1,0 +1,12 @@
+
+/* A pasta 'Assets' é onde se guarda os arquivos estáticos da aplicação. O CSS é um tipo de arquivo estático. */
+
+body {
+    background-color: red;
+    background-image: url(../imgs/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+/* os 2 pontos volta uma pasta */

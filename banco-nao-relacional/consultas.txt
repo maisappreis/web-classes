@@ -1,0 +1,39 @@
+
+- CONSULTAS SIMPLES
+
+> db.estados.findOne()
+> db.estados.find({sigla: "RJ"})
+> db.estados.find({sigla: "RJ"}).pretty()
+> db.estados.find({$or: [{sigla: "RJ"}, {sigla: "AC"}]}).pretty()
+> db.estados.find({populacao: {$exists: true}}).pretty()
+> db.estados.find().skip(1).limit(2)
+> db.estados.count()
+> db.estados.find({sigla: "SP"}, {nome: 1, sigla: 1, _id: 0})
+> db.estados.find({sigla: "SP"}, {"cidades.nome": 1, _id: 0})
+
+ps.: 1 significa presente, e 0 significa ausente.
+
+
+- CONSULTAS AGREGADAS: Aggregation Pipeline Stage
+- https://www.mongodb.com/docs/manual/reference/operator/aggregation-pipeline/
+
+ps: sempre que 'cidades.nome' estiver no lugar da chave, apenas coloca ""
+ps: sempre que 'cidades.nome' estiver no lugar do valor, usar o $ para interpolar mais "".
+
+
+> db.estados.aggregate([
+    { $project: {nome: 1, "cidades.nome": 1, _id: 0}}
+
+> db.estados.aggregate([
+    { $project: {populacao: {$sum: "$cidades.populacao"}, sigla: 1, _id: 0}},
+    { $group: {_id: null, populacaoTotal: {$sum: "$populacao" }}},
+    { $project: { _id: 0, populacaoTotal: 1 }}
+])
+
+> db.estados.aggregate([
+    { $match: {"cidades.nome": "Sorocaba" }},
+    { $unwind: "$cidades"},
+    { $match: {"cidades.nome": "Sorocaba"}},
+    { $project: {_id: "$cidades._id"}}
+]).pretty()
+

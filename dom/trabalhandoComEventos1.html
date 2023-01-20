@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <a espera-um-pouco href="https://google.com.br">Google</a>
+   <!-- <a href="https://google.com.br" onclick="navegarEm5s(event)">Google</a>  Aqui eu preciso chamar 'event', porque essa variável existe dentro do contexto do browser -->
+    </div>
+    <script>
+        // Interceptar cliques usando o JS.
+
+        function navegarEm5s(evento) {
+            evento.preventDefault() // 'preventDefault' vai previnir que o comportamento padrão ocorra.
+            console.log('Saindo em 5s...');
+            setTimeout(() => {
+                const link = evento.target
+                window.location.href = link.href // substituindo o endereço na barra de navegação do browser
+            }, 5000)
+        }
+
+        // Outra maneira de interceptar o click, sem precisar chamar a função dentro da tag do HTML.
+        // <a href="https://google.com.br" onclick="navegarEm5s(event)">
+
+        // const a = document.querySelector('a');
+        // a.onclick = navegarEm5s
+
+        // Porém a anterior não deixa explícito que aquele link la está sendo manipulado por um código JS. E para isso, melhor criar um atributo personalizado.
+
+        const a = document.querySelector('[espera-um-pouco]');
+        a.onclick = navegarEm5s
+
+    </script>
+</body>

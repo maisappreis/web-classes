@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        // Evento para atualizar a posição do mouse.
+
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`); // atualiza a posição do mouse nos eixos X e Y.
+        }
+
+        $('body').on('mousemove', mostrarPosicaoMouse); // associar o 'body' ao evento do mouse. A função 'on' registra um evento dentro do jQuery. Primeiro vc passa o 'nome do evento', numa string (não é eu qm escolho o nome), e segundo, uma função que será chamada qnd o evendo acontecer.
+        
+        $('#posicao').mouseover(e => {
+            $('body').off('mousemove', mostrarPosicaoMouse) // desliga a função quando passo o mouse em cima da 'div posicao'.
+        })
+
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostrarPosicaoMouse); // 'mousemove()' é também uma função, funcionou igual ao 'on()'
+            // $('body').on('mousemove', mostrarPosicaoMouse) // religa a função quando o mouse deixa de ficar em cima da 'div posicao'.
+        })
+
+        // Evento para monitorar o clique do mouse.
+
+        let cliques = 0;
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+
+        // Manipular eventos de teclado.
+
+        const backgroundOriginal = $('body').css('background-color'); // se colocado uma cor inválida no texto, ele restaura a cor original.
+
+        $('input').keyup(function (e) { // aqui não pode ser função arrow, porque vai deixar o 'this' interno igual ao 'this' externo a essa função.
+            const valor = $(this).val() // pegando o valor atual. Esse 'this' aqui é o 'input'.
+            if(valor.match(/#[\da-fA-F]{3,6}/)) {   // regex, parametros para cor válida ou não.
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
+
+    </script>
+</body>

@@ -1,0 +1,32 @@
+
+- CONSULTAS COM LOOKUP : pesquisa
+
+> db.empresas.aggregate([
+    {$match: {nome: "Bradesco"}},
+    {$lookup: {
+        from: "estados",
+        localField: "estadosId",
+        foreignField: "_id",
+        as: "estado"
+    }},
+    {$unwind: "$estado"}
+]).pretty()
+
+
+
+> db.empresas.aggregate([
+    {$match: {nome: "Vale"}},
+    {$lookup: {
+        from: "estados",
+        localField: "cidadeId",
+        foreignField: "cidade._id",
+        as: "estado"
+    }},
+    {$unwind: "$estado"},
+    {$unwind: "$estado.cidades"},
+    {$addFields: {mesmaCidade: {$cmp: ["$estado.cidades._id", "$cidadeId"]}}},
+    {$match: {mesmaCidade: 0}}
+]).pretty()
+
+ps: esse '$unwind' ele desenrola, desempacota os elementos, retira eles de dentro de um array [].
+ps: '$cmp' compara dois valores. Se der 0: o resultado bateu igual com a pesquisa, se der -1, foi menor, ou +1, foi maior.

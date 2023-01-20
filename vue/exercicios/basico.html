@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+
+    <div id="app">
+        <p>1) {{ 2 + 2 }}</p>
+        <p>2) {{ "teste".toUpperCase() }}</p>
+        <p>3) Produto: {{ nome }}, R$ {{ preco }}, {{ desconto * 100 }}%</p>
+        <p>4) Hora Certa: {{ horaCerta() }}</p>
+        <p>5) Preço com Desconto: R$ {{ precoComDesconto }}</p>
+    </div>
+
+    <script>
+        // quando aplico uma instacia do VUE, e associo ela a um trecho de HTML, ele passa a controlar esse trecho e tudo que está abaixo dele. 
+        // O VUE vai acabar manipulando a DOM. Ele vai automatizar muitas coisas.
+
+        new Vue({
+            el: "#app",  // trecho que será controlado pelo VUE. Ele tá conseguindo ler o código JS de dentro do {{}} lá em <p>
+            data: {     // objeto para colocar seus dados e acessa-los usando VUE.
+                nome: "Caneta",
+                preco: 6.89,
+                desconto: 0.15
+            }, 
+            methods: {  // o 'methods' precisa chamar como se fosse funcao()
+                horaCerta() {
+                    return new Date().toLocaleString()
+                }
+            },
+            computed: { // valores calculados, dentro de 'computed', não se chamam com o () lá no HTML. De resto sim.
+                precoComDesconto() {
+                    return this.preco * (1 - this.desconto)
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

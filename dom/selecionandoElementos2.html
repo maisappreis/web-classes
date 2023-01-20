@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        document.querySelector('#primeiro').classList.add('destaque') // Ele espera qualquer elemento, portanto, especificar #nomeID .nomeClasse tag
+
+        const selecionar = seletor => 
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque')) // Esse seletor retorna um 'NodeList'.
+        const deselecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque')) // uma função para ADD e uma para REMOVER.
+
+        selecionar('div');
+        deselecionar('*');
+        selecionar('.terceiro.ultimo');
+
+        deselecionar('*');
+        selecionar(':not(#primeiro'); // seleciona todos EXCETO o primeiro.
+
+        deselecionar('*');
+        selecionar(':nth-child(1)'); // selecionou o primeiro filho do 'body': #primeiro, e o selecionou o primeiro filho da 'div': o spam .terceiro.ultimo
+
+        deselecionar('*');
+        selecionar('div:nth-of-type(1)'); // Seleciona o primeiro elemento do tipo 'div'.
+
+        deselecionar('*');
+        selecionar('[wb-attrib]'); // Seleciona o atributo criado por mim.
+
+    </script>
+</body>
+</html>

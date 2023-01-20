@@ -1,0 +1,53 @@
+
+<!-- DIV e SPAN são agrupadores, para aplicar estilo, ou qqr coisa que quiser fazer em cima -->
+
+<!-- Tag 'div' muito usada para criar divisões, áreas, para agrupar elementos, o que pode facilitar ao aplicar estilo -->
+<!-- 'div' é o display 'block', de bloco | Mais 'div' faz com que se quebre a linha CSS pode mudar isso -->
+
+<!-- Tag 'span' usado num contexto mais inline, marcar um trecho de texto com estilo diferente, ou dar destaque -->
+<!-- Mais de um span não quebra linha - CSS pode mudar isso -->
+
+<h1>Tags Não Visuais</h1>
+
+<!--
+    Tags Semânticas...
+
+    section - agrupamento temático de conteúdo (é uma parte do todo) | Usar a 'div' e 'section' tem o mesmo efeito.
+    article - conteúdo auto-contido (tem um conteúdo próprio, indenpende do restante, tem inicio, meio e fim)
+    header - cabeçalho do documento
+    footer - rodapé do documento
+    nav - agrupa os links de navegação
+    aside - de lado (sidebar, ou um adendo)
+    details - detalhes de um produto, pode ser exibido e escondido
+
+    As famosas...
+
+    div - divisão ou seção
+    span - agrupa elementos inline
+
+-->
+
+<div>Área 1 |</div>
+<div>Área 2</div>
+
+<p>
+    Esse é um texto que mostra <span class="diferente">como o SPAN pode destacar</span> um texto.
+</p>
+
+
+<style>
+    div {
+        display: inline;
+    }
+
+    span {
+        color: red;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .diferente {
+        font-size: 30px;
+    }
+    
+</style>

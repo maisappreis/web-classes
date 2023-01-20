@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <title>Exercícios HTML</title>
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>    
+    </header>
+    <nav>
+        <a href="exercicios/texto1.html">01 - Texto 1</a> |
+        <a href="exercicios/texto2.html">02 - Texto 2</a> |
+        <a href="exercicios/listas.html">03 - Listas</a> |
+        <a href="exercicios/listaAninhada.html">04 - Lista Aninhada</a> |
+        <a href="exercicios/links.html">05 - Links</a> |
+        <a href="exercicios/tabela.html">06 - Tabela</a> |
+        <a href="exercicios/form/form.html">07 - Formulário</a> |
+        <a href="exercicios/imagens.html">08 - Imagens</a> |
+        <a href="exercicios/video.html">09 - Video</a> |    
+        <a href="exercicios/tagsNaoVisuais.html">10 - Tags Não Visuais</a> |      
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        Curso de Web Moderno
+    </footer>
+    <script>
+        document.querySelectorAll('a').forEach(link => { // associando a cada um dos links uma função, que será disparada no 'onclick'
+            link.onclick = function(e) {
+                e.preventDefault() // ele vai previnir o comportamento padrão, que é navegar.
+                
+                const conteudo = document.getElementById('conteudo') // obtive o conteudo a partir do 'getElementeById'.
+                fetch(link.href) // fazendo uma requisição AJAX usando 'fetch', e uma vez que a promise foi revolvida, ele chama o 'then'.
+                    .then(resp => resp.text()) // serve para pegar o conteúdo HTML da página que eu fiz a requisição. Chama uma função que retornará outra Promise.
+                    .then(html => conteudo.innerHTML = html) // ai recebo o HTML, e ele vai substituir o conteudo da section para ver os conteudos serem alterados.
+            } // agora ele mostra o conteudo na mesma página após clicar no link, não vai mais para outra página. Navego sem sair da minha página INDEX.
+        }) // Desse jeito eu preciso que apenas na página INDEX tenha toda a estrutura HTML, as outras basta colocar o conteúdo.
+    </script>
+</body>
+
+
+</html>
+
+<!-- Para ver no browser, abra a porta no terminal: http-server . |-->
+<!-- Caso queira mudar a porta no Terminal: http-server -p 9090 . |-->
+<!-- Desabilitar o cache no terminal: http-server -c-1 . | assim posso atualizar os módulos do meu HMTL e já atualizarão as páginas no browser -->
+<!-- Voltar pasta no Terminal: cd .. -->

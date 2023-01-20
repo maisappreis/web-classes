@@ -1,0 +1,29 @@
+{
+  "name": "aulas-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+    "scripts": {
+    "start": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-dev-server": "4.9.0",
+    "file-loader": "6.2.0",
+    "cross-env": "7.0.3",
+    "optimize-css-assets-webpack-plugin": "6.0.1",
+    "uglifyjs-webpack-plugin": "2.2.0",
+    "node-sass": "7.0.1",
+    "sass-loader": "13.0.0",
+    "mini-css-extract-plugin": "2.6.0",
+    "css-loader": "6.7.1",
+    "style-loader": "3.3.1",
+    "webpack": "5.72.1",
+    "webpack-cli": "4.9.2",
+    "webpack-dev-middleware": "5.3.3",
+    "webpack-hot-middleware": "2.25.1"
+  }
+}

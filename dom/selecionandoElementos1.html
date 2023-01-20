@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css"> <!-- Tem um arquivo CSS sendo importado aqui -->
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        // Como selecionar elementos a partir da DOM
+        // .getElementById() | Um único elemento com um ID único.
+        // .getElementsByTagName() | Retorna um HTMLCollection com a lista de Tags solicitadas. No caso aqui, as 3 divs ali em cima.
+        // .getElementsByClassName() | Retorna um HTMLCollection com a lista de classes.
+
+        document.getElementById('primeiro').classList.add('destaque') // Como já é esperado um ID, não precisa colocar o #nomeID | Esse 'destaque' é uma classe que está lá no ar 'estilo.css'
+
+        const divs = document.getElementsByTagName('div') // retorna um HTMLCollection com uma lista com as 3 divs ali em cima.
+        Array.from(divs).forEach(e => e.classList.remove('destaque')) // transforma o HTMLCollection de 'divs' em array, para percorrar com 'forEach'
+
+        const divsArray = [...divs]; // outra forma de criar um Array de 'divs'
+        divsArray.forEach(e => e.classList.add('destaque'))
+
+        const ultimosElementos = document.getElementsByClassName('ultimo') // No console: dir(nomeDaConst)
+        for(let e of ultimosElementos) { // um FOR em cima do HTML colection.
+            e.classList.remove('destaque')
+        }
+
+    </script>
+</body>
+</html>
